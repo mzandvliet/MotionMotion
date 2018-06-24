@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotionMotion", "Assembly-CSharp.csproj", "{05A9D48B-0937-8C9C-46E3-AA67798D5A0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MotionMotion", "Assembly-CSharp-Editor.csproj", "{D1B1C297-3E83-BB21-062F-96DA1B3272A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{05A9D48B-0937-8C9C-46E3-AA67798D5A0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05A9D48B-0937-8C9C-46E3-AA67798D5A0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05A9D48B-0937-8C9C-46E3-AA67798D5A0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05A9D48B-0937-8C9C-46E3-AA67798D5A0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1B1C297-3E83-BB21-062F-96DA1B3272A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1B1C297-3E83-BB21-062F-96DA1B3272A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1B1C297-3E83-BB21-062F-96DA1B3272A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1B1C297-3E83-BB21-062F-96DA1B3272A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
