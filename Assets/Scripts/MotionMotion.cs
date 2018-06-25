@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using SimWinInput;
 
+using SimWinInput;
 public class MotionMotion : MonoBehaviour {
     private ControllerState _left;
     private ControllerState _right;
@@ -71,7 +71,7 @@ public class MotionMotion : MonoBehaviour {
         if (OVRInput.GetDown(OVRInput.Button.One)) {
             //RamjetInput.DirectInput.SendKey(0x11);
             //WarhammerMan.Input.PressKey('w', true);
-            ModernInput.WindowsAPI.SendKey((short)0x11); // YES THIS WORKS!
+            DirectInput.Input.SendKey((short)0x11); // YES THIS WORKS!
         }
     }
 

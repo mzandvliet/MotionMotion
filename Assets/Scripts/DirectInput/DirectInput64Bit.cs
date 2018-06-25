@@ -2,8 +2,8 @@ using System;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace ModernInput {
-    public static class WindowsAPI {
+namespace DirectInput {
+    public static class Input {
         public static void SendKey(short Keycode)
         {
             INPUT[] inputs = new INPUT[1];

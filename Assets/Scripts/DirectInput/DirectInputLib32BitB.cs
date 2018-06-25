@@ -2,7 +2,7 @@ using System;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace WarhammerMan
+namespace DirectInputLib32BitB
 {
     public static class Input
     {
