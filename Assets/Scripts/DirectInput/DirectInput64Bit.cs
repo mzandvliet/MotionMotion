@@ -2,19 +2,41 @@ using System;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
+/*
+
+From these sources:
+
+https://stackoverflow.com/questions/8962850/sendinput-fails-on-64bit
+https://stackoverflow.com/questions/6830651/sendinput-and-64bits
+http://www.pinvoke.net/default.aspx/user32.sendinput
+https://www.developerfusion.com/article/84519/mastering-structs-in-c/
+
+*/
+
 namespace DirectInput {
+    public enum ScanCode : UInt16
+    {
+        A = 0x1e,
+        D = 0x20,
+        E = 0x12,
+        Q = 0x10,
+        S = 0x1f,
+        W = 0x11,
+        Space = 0x39,
+        LControl = 0x1d,
+    }
+
     public static class Input {
-        public static void SendKey(short Keycode)
+        public static void SendKey(ScanCode scancode, bool up)
         {
             INPUT[] inputs = new INPUT[1];
 
-            UInt16 vkcode = (UInt16)0x57;
-            UInt16 scancode = (UInt16)0x11;
+            //UInt16 vkcode = (UInt16)0x57; // Do we still need this?
 
             inputs[0].type = INPUT_KEYBOARD;
-            inputs[0].u.ki.wVk = vkcode;
-            inputs[0].u.ki.wScan = scancode;
-            inputs[0].u.ki.dwFlags = 0;
+            inputs[0].u.ki.wVk = 0;
+            inputs[0].u.ki.wScan = (UInt16)scancode;
+            inputs[0].u.ki.dwFlags = KEYEVENTF_SCANCODE | (up ? KEYEVENTF_KEYUP : 0);
             inputs[0].u.ki.time = 0;
             inputs[0].u.ki.dwExtraInfo = IntPtr.Zero;
 

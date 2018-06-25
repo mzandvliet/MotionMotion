@@ -38,40 +38,45 @@ public class MotionMotion : MonoBehaviour {
         var indexL = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.LTouch);
         var indexR = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch);
 
-        int x = (int)(_right.AngularVelocity.y * (0.25f + 0.75f * indexR) * 30f);
-		int y = (int)(_right.AngularVelocity.x * (0.25f + 0.75f * indexR) * 30f);
+        int x = (int)(_right.AngularVelocity.y * (0.5f + 0.5f * indexR) * 30f);
+		int y = (int)(_right.AngularVelocity.x * (0.5f + 0.5f * indexR) * 30f);
 
 		if (_active) {
             // Look
-			// SimMouse.ActRaw(SimMouse.Action.MoveOnly, x, y);
+			SimMouse.ActRaw(SimMouse.Action.MoveOnly, x, y);
 
-            // // Shoot
-			// if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)) {
-			// 	SimMouse.Act(SimMouse.Action.LeftButtonDown, 0, 0);
-			// }
-            // if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)) {
-			// 	SimMouse.Act(SimMouse.Action.LeftButtonUp, 0, 0);
-			// }
+            // Shoot
+			if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)) {
+				SimMouse.Act(SimMouse.Action.LeftButtonDown, 0, 0);
+			}
+            if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch)) {
+				SimMouse.Act(SimMouse.Action.LeftButtonUp, 0, 0);
+			}
 
-            Vector2 move = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
-            if (move.x > 0.5f) {
-                Debug.Log("Move");
-            }
-            // if (move.x < 0.5f) {
-            //     SimKeyboard.Press((byte)'A');
-            // }
-            // if (move.y > 0.5f) {
-            //     SimKeyboard.Press((byte)'W');
-            // }
-            // if (move.y < 0.5f) {
-            //     SimKeyboard.Press((byte)'S');
-            // }
-		}
+            //Vector2 moveAnalog = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.LTouch);
 
-        if (OVRInput.GetDown(OVRInput.Button.One)) {
-            //RamjetInput.DirectInput.SendKey(0x11);
-            //WarhammerMan.Input.PressKey('w', true);
-            DirectInput.Input.SendKey((short)0x11); // YES THIS WORKS!
+            HandleKey(OVRInput.Button.Up, OVRInput.Controller.LTouch, DirectInput.ScanCode.W);
+            HandleKey(OVRInput.Button.Down, OVRInput.Controller.LTouch, DirectInput.ScanCode.S);
+            HandleKey(OVRInput.Button.Left, OVRInput.Controller.LTouch, DirectInput.ScanCode.A);
+            HandleKey(OVRInput.Button.Right, OVRInput.Controller.LTouch, DirectInput.ScanCode.D);
+
+            HandleKey(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.LTouch, DirectInput.ScanCode.Space);
+            HandleKey(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.LTouch, DirectInput.ScanCode.LControl);
+
+            HandleKey(OVRInput.Button.Left, OVRInput.Controller.RTouch, DirectInput.ScanCode.Q);
+            HandleKey(OVRInput.Button.Right, OVRInput.Controller.RTouch, DirectInput.ScanCode.E);
+
+        }
+    }
+
+    private void HandleKey(OVRInput.Button button, OVRInput.Controller controller, DirectInput.ScanCode scancode) {
+        if (OVRInput.GetDown(button, controller))
+        {
+            DirectInput.Input.SendKey(scancode, false);
+        }
+        if (OVRInput.GetUp(button, controller))
+        {
+            DirectInput.Input.SendKey(scancode, true);
         }
     }
 

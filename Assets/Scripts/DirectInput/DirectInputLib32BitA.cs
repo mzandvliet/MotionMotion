@@ -1,9 +1,9 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace RamjetInput
+namespace DirectInputLib32BitA
 {
-    public static class DirectInput
+    public static class Input
     {
         [DllImport("user32.dll")]
         static extern UInt32 SendInput(UInt32 nInputs, [MarshalAs(UnmanagedType.LPArray, SizeConst = 1)] INPUT[] pInputs, Int32 cbSize);
