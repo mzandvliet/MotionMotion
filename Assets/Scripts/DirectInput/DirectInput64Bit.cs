@@ -14,12 +14,20 @@ https://www.developerfusion.com/article/84519/mastering-structs-in-c/
 */
 
 namespace DirectInput {
+    // https://gist.github.com/tracend/912308
     public enum ScanCode : UInt16
     {
+        One = 0x02,
+        Two = 0x03,
+        Three = 0x04,
+        Four = 0x05,
         A = 0x1e,
         D = 0x20,
         E = 0x12,
+        H = 0x23,
+        J = 0x24,
         Q = 0x10,
+        R = 0x13,
         S = 0x1f,
         W = 0x11,
         Space = 0x39,
